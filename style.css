@@ -33,6 +33,35 @@ header {
     transform: translateY(2px);
     box-shadow: 0 2px 0 #ff6f00;
 }
+.manual-qr {
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manual-qr img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.leaderboard-link {
+    text-align: center;
+    font-size: 12px;
+}
+
+.btn-cek-saweria {
+    display: block;
+    margin-top: 5px;
+    background: #ffca28;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
 
 .btn-support:active {
     transform: translateY(4px);
@@ -214,4 +243,5 @@ iframe {
         font-size: 12px;
         padding: 8px 15px;
     }
+
 }
