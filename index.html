@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pustaka Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🏛️ Ruang Baca Digital</h1>
+        <p>Klik sampul untuk membaca buku</p>
+        <br>
+        <a href="https://saweria.co/Port404" target="_blank" class="btn-support">
+            💖 Traktir Penulis (Saweria)
+        </a>
+    </header>
+
+    <main id="library-grid"></main>
+
+    <div id="pdf-viewer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupBuku()">&times; Tutup Buku</span>
+            <iframe id="pdf-frame" src=""></iframe>
+        </div>
+    </div>
+
+    <div class="overlay-saweria">
+        <div class="overlay-header">
+            <span>Scan untuk Dukung 👇</span>
+        </div>
+        
+        <div class="qr-box">
+            <iframe 
+                src="https://saweria.co/widgets/qr?streamKey=82a8839ff74332c171273cebbb9ea880" 
+                title="Saweria QR">
+            </iframe>
+        </div>
+
+        <div class="divider">🏆 Top Supporters</div>
+
+        <div class="leaderboard-box">
+            <iframe 
+                src="https://saweria.co/widgets/leaderboard?streamKey=82a8839ff74332c171273cebbb9ea880" 
+                title="Saweria Leaderboard">
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // DATA BUKU
+        const koleksiBuku = [
+            { 
+                judul: "Dibalik IPK 3.6", 
+                file: "IPK 3,6_merged (1).pdf",     
+                cover: "Dibalik.png"    
+            },
+            // Tambah buku lain di sini jika ada
+        ];
+
+        const libraryGrid = document.getElementById('library-grid');
+        const modal = document.getElementById('pdf-viewer-modal');
+        const pdfFrame = document.getElementById('pdf-frame');
+
+        // Render Daftar Buku
+        koleksiBuku.forEach(buku => {
+            const item = document.createElement('div');
+            item.className = 'book-card';
+            item.onclick = () => bacaBuku(buku.file); 
+            
+            item.innerHTML = `
+                <div class="cover-wrapper">
+                    <img src="sampul/${buku.cover}" alt="${buku.judul}" onerror="this.src='https://via.placeholder.com/150x200?text=No+Cover'">
+                </div>
+                <h3>${buku.judul}</h3>
+                <button class="btn-baca">Baca Sekarang</button>
+            `;
+            libraryGrid.appendChild(item);
+        });
+
+        // Fungsi Buka PDF
+        function bacaBuku(namaFile) {
+            // EncodeURIComponent penting agar nama file yang ada spasi/koma terbaca dengan benar
+            pdfFrame.src = `buku/${encodeURIComponent(namaFile)}#view=FitH`; 
+            modal.style.display = "flex";
+        }
+
+        // Fungsi Tutup PDF
+        function tutupBuku() {
+            modal.style.display = "none";
+            pdfFrame.src = ""; 
+        }
+
+        // Tutup jika klik di luar area
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                tutupBuku();
+            }
+        }
+    </script>
+</body>
+</html>
