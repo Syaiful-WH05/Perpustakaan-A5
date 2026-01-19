@@ -28,24 +28,23 @@
 
     <div class="overlay-saweria">
         <div class="overlay-header">
-            <span>Scan untuk Dukung 👇</span>
+            <span>Dukung Penulis 👇</span>
         </div>
         
-        <div class="qr-box">
-            <iframe 
-                src="https://saweria.co/widgets/qr?streamKey=82a8839ff74332c171273cebbb9ea880" 
-                title="Saweria QR">
-            </iframe>
+        <div class="qr-box manual-qr">
+            <img src="sampul/qr-saweria.png" alt="Scan QRIS Saweria">
         </div>
 
-        <div class="divider">🏆 Top Supporters</div>
+        <div class="divider">Terima Kasih!</div>
 
-        <div class="leaderboard-box">
-            <iframe 
-                src="https://saweria.co/widgets/leaderboard?streamKey=82a8839ff74332c171273cebbb9ea880" 
-                title="Saweria Leaderboard">
-            </iframe>
+        <div class="leaderboard-link">
+            <p>Lihat daftar pendukung di:</p>
+            <a href="https://saweria.co/Port404" target="_blank" class="btn-cek-saweria">
+                Halaman Saweria ➜
+            </a>
         </div>
+        
+        <button onclick="document.querySelector('.overlay-saweria').style.display='none'" style="margin-top:10px; background:none; border:none; color:#aaa; font-size:10px; cursor:pointer;">(Tutup Panel)</button>
     </div>
 
     <script>
@@ -102,3 +101,4 @@
 </body>
 
 </html>
+
